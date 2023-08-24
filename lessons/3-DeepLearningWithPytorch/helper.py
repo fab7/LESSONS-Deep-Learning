@@ -1,8 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import torch
 from torch import nn, optim
 from torch.autograd import Variable
 
+
+def pytorch_version():
+    """Returns the PyTorch version as a string"""
+    return(torch.__version__)
+
+
+def pytorch_major_version():
+    """Returns the PyTorch major version as an integer"""
+    vers_splits = pytorch_version().split(".")
+    return(int(vers_splits[0]))
+    
 
 def test_network(net, trainloader):
 
@@ -27,7 +39,6 @@ def test_network(net, trainloader):
 
     return True
 
-
 def imshow(image, ax=None, title=None, normalize=True):
     """Imshow for Tensor."""
     if ax is None:
@@ -50,7 +61,6 @@ def imshow(image, ax=None, title=None, normalize=True):
     ax.set_yticklabels('')
 
     return ax
-
 
 def view_recon(img, recon):
     ''' Function for displaying an image (as a PyTorch Tensor) and its
